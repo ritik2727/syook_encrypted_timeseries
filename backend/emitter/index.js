@@ -46,7 +46,8 @@ function getRandomCity() {
 function encryptMessage(textToEncrypt) {
   const text = Buffer.from(textToEncrypt); // textToEncryptAsByteArray
   //   crypto.randomBytes(32).toString('hex');
-  const key = "c648b408043709aa8e0d7cdfcc0fc9f9879493464cc1012078d0af088abcf6d6";
+  const key =
+    "c648b408043709aa8e0d7cdfcc0fc9f9879493464cc1012078d0af088abcf6d6";
   const iv = crypto.randomBytes(16); //inicialization vector
   let cipher = crypto.createCipheriv(
     "aes-256-ctr",
@@ -61,10 +62,8 @@ function encryptMessage(textToEncrypt) {
 function emitEncryptedMessages() {
   const messages = generateRandomMessage();
   const encryptedMessages = messages.map((message) => ({
-    ...message,
-    encrypted: encryptMessage(
-      JSON.stringify(message)
-    ),
+    // ...message,
+    encrypted: encryptMessage(JSON.stringify(message)),
   }));
 
   console.log("encryptedMessages", encryptedMessages);
@@ -80,5 +79,3 @@ socket.on("connect", () => {
 socket.on("disconnect", () => {
   console.log("Emitter disconnected from Listener");
 });
-
-
