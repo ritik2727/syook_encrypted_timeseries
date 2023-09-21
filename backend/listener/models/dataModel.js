@@ -1,33 +1,33 @@
 const mongoose = require("mongoose");
 
-const dataSchema = mongoose.Schema(
-  {
-    name: {
-      type: String,
-      require: true,
+// Define the schema for the TimeSeriesData collection
+const TimeSeriesDataSchema = new mongoose.Schema({
+  // Timestamp represents the minute in which the data is received and is required
+  timestamp: { type: Date, required: true },
+
+  // Data is an array of objects containing specific information
+  data: [
+    {
+      // Name of the person associated with the data
+      name: String,
+
+      // Origin location
+      origin: String,
+
+      // Destination location
+      destination: String,
+
+      // Timestamp for individual data entries 
+      timestamp: Date,
     },
-    origin: {
-      type: String,
-      require: true,
-    },
-    destination: {
-      type: String,
-      require: true,
-    },
-    secret_key: {
-      type: String,
-      require: true,
-    },
-    timestamp: {
-      type: Date,
-      require: true,
-    },
-  },
-  {
-    timeStamps: true,
-  }
+  ],
+});
+
+// Create a Mongoose model for the TimeSeriesData collection using the defined schema
+const TimeSeriesDataModel = mongoose.model(
+  "TimeSeriesData",
+  TimeSeriesDataSchema
 );
 
-const Data = mongoose.model("Data", dataSchema);
-
-module.exports = Data;
+// Export the model to be used in other parts of the application
+module.exports = TimeSeriesDataModel;
