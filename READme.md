@@ -8,6 +8,10 @@ Encrypted Time Series is a Node.js application that demonstrates the collection 
 Make a small backend application which can generate and emit an encrypted data stream over a socket, listens to incoming data stream on a socket, decrypts and decodes it, save to a time series db and then emit the saved data to a small frontend app. Backend services can be in any language (Node JS is preferred, but use Go or any other that you are comfortable with).
 
 
+- **Emitter:** Responsible for creating encrypted messages and sending them to the listener using WebSockets.
+- **Listener:** Receives encrypted messages, decrypts them, saves them into a database, and broadcasts the decrypted messages to the frontend.
+- **Frontend:** Displays the decrypted messages to users in real-time.
+
 ## Getting Started
 
 Follow the instructions below to set up and run the project on your local machine.
