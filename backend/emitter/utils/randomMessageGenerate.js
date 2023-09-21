@@ -3,7 +3,7 @@ const crypto = require("crypto");
 
 function generateRandomMessage() {
   // Generate a random number of messages
-  const numberOfMessages = 2; // Change this to your desired number of messages
+  const numberOfMessages = Math.floor(Math.random() * (499 - 49 + 1)) + 49; // Random number of messages between 49 and 499
   const messages = [];
 
   for (let i = 0; i < numberOfMessages; i++) {

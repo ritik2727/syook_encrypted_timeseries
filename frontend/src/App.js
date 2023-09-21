@@ -11,21 +11,17 @@ function App() {
   useEffect(() => {
     // Listen for the 'savedData' event from the backend
     socket.on("savedData", (newData) => {
+      console.log("Saved data", newData);
       setData(newData);
-    })
+    });
 
     // Clean up the socket connection when the component unmounts
     // return () => {
     //   socket.disconnect();
     // };
   }, []);
-  console.log("uuuu", data.upsertRes.data);
-  return (
-    <div className="App">
-      
-      <CardComponent data={data} />
-    </div>
-  );
+  // console.log("uuuu", data);
+  return <div className="App">{data && <CardComponent data={data} />}</div>;
 }
 
 export default App;
